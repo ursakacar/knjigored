@@ -1,0 +1,22 @@
+<%= form_with(model: genre, local: true) do |form| %>
+  <% if genre.errors.any? %>
+    <div id="error_explanation">
+      <h2>Žanra ni bilo mogoče shraniti.</h2>
+
+      <ul>
+        <% genre.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "Ime" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

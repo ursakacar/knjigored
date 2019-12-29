@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ime:</strong>
+  <%= @genre.name %>
+</p>
+
+<%= link_to 'Uredi', edit_genre_path(@genre) %> |
+<%= link_to 'Nazaj', genres_path %>

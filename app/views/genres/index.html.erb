@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Žanri</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ime</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td><%= genre.name %></td>
+        <td><%= link_to 'Prikaži', genre %></td>
+        <td><%= link_to 'Uredi', edit_genre_path(genre) %></td>
+        <td><%= link_to 'Izbriši', genre, method: :delete, data: { confirm: 'Ste prepričani, da želite izbrisati žanr?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Dodaj žanr', new_genre_path %>

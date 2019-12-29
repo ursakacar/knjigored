@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Interna številka:</strong>
+  <%= @book.internal_number %>
+</p>
+
+<p>
+  <strong>Naslov:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Avtor:</strong>
+  <%= @book.author_id %>
+</p>
+
+<p>
+  <strong>Žanr:</strong>
+  <%= @book.genre_id %>
+</p>
+
+<p>
+  <strong>Izposojena:</strong>
+  <%= @book.is_borrowed ? 'Da' : 'Ne' %>
+</p>
+
+<%= link_to 'Uredi', edit_book_path(@book) %> |
+<%= link_to 'Nazaj', books_path %>

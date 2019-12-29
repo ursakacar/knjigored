@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  internal_number: 1
+  title: MyString
+  is_borrowed: false
+  genre: one
+  author: one
+
+two:
+  internal_number: 1
+  title: MyString
+  is_borrowed: false
+  genre: two
+  author: two
