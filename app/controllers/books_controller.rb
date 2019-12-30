@@ -4,7 +4,29 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all.order(:title)
+    query_param = params[:query]
+    where_query = "
+      REPLACE(REPLACE(REPLACE(LOWER(books.title), 'č', 'c'), 'š', 's'), 'ž', 'z') LIKE :query OR
+      REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z') LIKE :query OR
+      REPLACE(REPLACE(REPLACE(LOWER(genres.name), 'č', 'c'), 'š', 's'), 'ž', 'z') LIKE :query
+    "
+
+    if is_int? query_param
+      where_query = where_query + "OR books.internal_number = :raw_query"
+    else
+      query_param = query_param.downcase
+    end
+
+    @books = Book.all
+      .joins(:author, :genre)
+      .where(
+        where_query,
+        {
+          query: "%#{query_param}%",
+          raw_query: query_param,
+        }
+      )
+      .order(:title)
   end
 
   # GET /books/1
@@ -65,6 +87,12 @@ class BooksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
+    end
+
+    def is_int?(str)
+      !!Integer(str)
+    rescue ArgumentError, TypeError
+      false
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
