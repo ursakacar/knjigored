@@ -3,3 +3,19 @@
 .book--borrowed {
   background-color: $error_red_background;
 }
+
+.books__search {
+  display: flex;
+  margin: 10px 0;
+}
+
+.books__search-button {
+  border: 1px solid black;
+  border-radius: 6px;
+  text-decoration: none;
+  color: blue !important;
+  padding: 2px 6px;
+  margin-left: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+}

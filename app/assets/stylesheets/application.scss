@@ -1,78 +1,15 @@
-@import './variables.scss';
-
-body {
-  padding: 20px;
-}
-
-table {
-  border: 1px solid black;
-  box-sizing: border-box;
-}
-
-thead {
-  color: black;
-  font-style: bold;
-  font-size: 18px;
-}
-
-th {
-  padding-right: 25px;
-}
-
-tr {
-  border-bottom: 1px solid black;
-}
-
-td {
-  font-size: 15px;
-  line-height: 28px;
-  padding: 7px;
-}
-
-a {
-  border: 1px solid black;
-  border-radius: 6px;
-  text-decoration: none;
-  color: blue !important;
-  padding: 2px 6px;
-  box-sizing: border-box;
-
-  &:hover {
-    text-decoration: none !important;
-    background-color: gray !important;
-    color: white !important;
-  }
-}
-
-.field {
-  margin: 30px 0;
-
-  label {
-    display: block;
-  }
-}
-
-.actions {
-  margin: 50px 0;
-  margin-bottom: 25px !important;
-}
-
-#notice {
-  font-size: 18px;
-  border: 1px solid black;
-  border-radius: 8px;
-  padding: 7 15px;
-  width: fit-content;
-  background-color: $notice_gray_background;
-}
-
-#error_explanation {
-  background-color: $error_red_background;
-  width: fit-content;
-  padding: 7px 20px;
-  border-radius: 8px;
-
-  h2 {
-    font-size: 18px;
-  }
-}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
