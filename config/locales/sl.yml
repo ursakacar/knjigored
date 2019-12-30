@@ -12,9 +12,38 @@ sl:
         update: 'Popravi žanr'
 
   activerecord:
+    attributes:
+      book:
+        author: 'Avtor'
+        genre: 'Žanr'
+        title: 'Naslov'
+        is_borrowed: 'Izposojena'
+        internal_number: 'Interna stevilka'
+      genre:
+        name: 'Ime'
+      author:
+        name: 'Ime'
     errors:
       messages:
         record_invalid: ''
+      models:
+        book:
+          attributes:
+            author:
+              required: 'ne sme biti prazen'
+            genre:
+              required: 'ne sme biti prazen'
+            title:
+              required: 'ne sme biti prazen'
+            internal_number:
+              required: 'ne sme biti prazna'
+        genre:
+          attributes:
+            name: 'Ime'
+        author:
+          attributes:
+            name: 'Ime'
+
   date:
     abbr_day_names:
     - ned
