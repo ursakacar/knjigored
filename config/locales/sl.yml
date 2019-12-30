@@ -18,7 +18,7 @@ sl:
         genre: 'Žanr'
         title: 'Naslov'
         is_borrowed: 'Izposojena'
-        internal_number: 'Interna stevilka'
+        internal_number: 'Interna številka'
       genre:
         name: 'Ime'
       author:
@@ -35,8 +35,10 @@ sl:
               required: 'ne sme biti prazen'
             title:
               required: 'ne sme biti prazen'
+              blank: 'ne sme biti prazen'
             internal_number:
               required: 'ne sme biti prazna'
+              blank: 'ne sme biti prazna'
         genre:
           attributes:
             name: 'Ime'
@@ -180,7 +182,7 @@ sl:
       less_than_or_equal_to: mora biti manj ali enako %{count}
       not_a_number: ni številka
       odd: mora biti liho
-      taken: je že zasedeno
+      taken: že obstaja
       too_long: je predolgo (dovoljeno je do %{count} znakov)
       too_short: je prekratko (zahtevano je najmanj %{count} znakov)
       wrong_length: je napačne dolžine (mora biti natančno %{count} znakov)
