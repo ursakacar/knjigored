@@ -6,16 +6,16 @@ class BooksController < ApplicationController
   def index
     @raw_query_param = params[:query]
     where_query = "
-      REPLACE(REPLACE(REPLACE(LOWER(books.title), 'č', 'c'), 'š', 's'), 'ž', 'z') LIKE :query OR
-      REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z') LIKE :query OR
-      REPLACE(REPLACE(REPLACE(LOWER(genres.name), 'č', 'c'), 'š', 's'), 'ž', 'z') LIKE :query
+      REPLACE(REPLACE(REPLACE(REPLACE(LOWER(books.title), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') LIKE :query OR
+      REPLACE(REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') LIKE :query OR
+      REPLACE(REPLACE(REPLACE(REPLACE(LOWER(genres.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') LIKE :query
     "
 
     if is_int? @raw_query_param
       where_query = where_query + "OR books.internal_number = :raw_query"
     else
-      query_param = @raw_query_param.downcase rescue ''
-    end
+      query_param = @raw_query_param.delete(' ').downcase rescue ''
+    end 
 
     @books = Book.all
       .joins(:author, :genre)
