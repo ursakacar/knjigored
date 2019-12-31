@@ -4,7 +4,7 @@ var searchFunction = function () {
   window.location.href = destination
 }
 
-window.addEventListener('load',function () {
+window.addEventListener('turbolinks:load',function () {
   var searchButton = document.getElementById('books-search-button')
   var searchInput = document.getElementById('books-search-input')
 
