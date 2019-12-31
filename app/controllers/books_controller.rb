@@ -4,17 +4,17 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    query_param = params[:query]
+    @raw_query_param = params[:query]
     where_query = "
       REPLACE(REPLACE(REPLACE(LOWER(books.title), 'č', 'c'), 'š', 's'), 'ž', 'z') LIKE :query OR
       REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z') LIKE :query OR
       REPLACE(REPLACE(REPLACE(LOWER(genres.name), 'č', 'c'), 'š', 's'), 'ž', 'z') LIKE :query
     "
 
-    if is_int? query_param
+    if is_int? @raw_query_param
       where_query = where_query + "OR books.internal_number = :raw_query"
     else
-      query_param = query_param.downcase
+      query_param = @raw_query_param.downcase rescue ''
     end
 
     @books = Book.all
@@ -23,7 +23,7 @@ class BooksController < ApplicationController
         where_query,
         {
           query: "%#{query_param}%",
-          raw_query: query_param,
+          raw_query: @raw_query_param,
         }
       )
       .order(:title)
