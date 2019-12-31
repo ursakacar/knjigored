@@ -5,11 +5,19 @@ var searchFunction = function () {
 }
 
 window.addEventListener('load',function () {
-  document.getElementById('books-search-button').addEventListener('click', searchFunction)
-  document.getElementById('books-search-input').addEventListener('keyup', function (event) {
-    if (event.keyCode === 13) {
-      searchFunction()
-    }
-  })
+  var searchButton = document.getElementById('books-search-button')
+  var searchInput = document.getElementById('books-search-input')
+
+  if (searchButton) {
+    searchButton.addEventListener('click', searchFunction)
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('keyup', function (event) {
+      if (event.keyCode === 13) {
+        searchFunction()
+      }
+    })
+  }
 })
 
