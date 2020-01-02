@@ -10,11 +10,10 @@ class BooksController < ApplicationController
       REPLACE(REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') LIKE :query OR
       REPLACE(REPLACE(REPLACE(REPLACE(LOWER(genres.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') LIKE :query
     "
+    query_param = @raw_query_param.delete(' ').downcase rescue ''
 
     if is_int? @raw_query_param
       where_query = where_query + "OR books.internal_number = :raw_query"
-    else
-      query_param = @raw_query_param.delete(' ').downcase rescue ''
     end 
 
     @books = Book.all
