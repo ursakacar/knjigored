@@ -27,7 +27,7 @@
         <td><%= book.internal_number %></td>
         <td><%= book.title %></td>
         <td><%= book.author.name %></td>
-        <td><%= book.genre.name %></td>
+        <td><%= book.genre.name if book.genre %></td>
         <td><%= book.is_borrowed ? 'Da' : 'Ne' %></td>
         <td><%= link_to 'Prikaži', book %></td>
         <td><%= link_to 'Uredi', edit_book_path(book) %></td>

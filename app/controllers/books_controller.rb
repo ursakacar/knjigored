@@ -17,7 +17,7 @@ class BooksController < ApplicationController
     end 
 
     @books = Book.all
-      .joins(:author, :genre)
+      .left_joins(:author, :genre)
       .where(
         where_query,
         {
