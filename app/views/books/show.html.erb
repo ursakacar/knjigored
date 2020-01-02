@@ -14,12 +14,12 @@
 
 <p>
   <strong>Avtor:</strong>
-  <%= @book.author_id %>
+  <%= @book.author.name %>
 </p>
 
 <p>
   <strong>Žanr:</strong>
-  <%= @book.genre_id %>
+  <%= @book.genre.name if @book.genre %>
 </p>
 
 <p>
