@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
     if @librarian.login_valid?
       session[:current_user] = true
-      redirect_back(fallback_location: '/')
+      redirect_to '/'
     else
       @librarian.password = nil
       flash[:notice] = 'Napačno uporabniško ime ali geslo'

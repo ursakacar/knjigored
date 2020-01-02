@@ -2,24 +2,24 @@
     <section>
       <div style="color: red;"><%= flash[:notice] if flash[:notice]  %></div>
 
-      <%= form_for @librarian, url: sessions_path do |f| %>
-        <div>
-          <%= f.label 'Uporabniško ime' %>
-          <%= f.text_field :username %>
-        </div>
-
-        <div>
-          <%= f.label 'Geslo' %>
-          <%= f.password_field :password %>
-        </div>
-
-        <div>
-          <%= f.submit 'Prijava' %>
-        </div>
-
         <% if session[:current_user] %>
-          <li><%= link_to 'Log OUT', logout_sessions_path %></li>
+          <%= link_to 'Odjava', logout_sessions_path %>
+        <% else %>
+          <%= form_for @librarian, url: sessions_path do |f| %>
+            <div>
+              <%= f.label 'Uporabniško ime' %>
+              <%= f.text_field :username %>
+            </div>
+
+            <div>
+              <%= f.label 'Geslo' %>
+              <%= f.password_field :password %>
+            </div>
+
+            <div>
+              <%= f.submit 'Prijava' %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
     </section>
 </div>
