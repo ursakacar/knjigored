@@ -33,9 +33,10 @@
         <td><%= book.author.name %></td>
         <td><%= book.genre.name if book.genre %></td>
         <td><%= book.is_borrowed ? 'Da' : 'Ne' %></td>
+
         <% if session[:current_user] %>
           <td><%= link_to 'Prikaži', book %></td>
-         <td><%= link_to 'Uredi', edit_book_path(book) %></td>
+          <td><%= link_to 'Uredi', edit_book_path(book) %></td>
           <td><%= link_to 'Izbriši', book, method: :delete, data: { confirm: 'Ste prepričani, da želite izbrisati knjigo?' } %></td>
         <% end %>
       </tr>

@@ -12,27 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :internal_number, "Interna številka" %>
+    <%= form.label :internal_number %>
     <%= form.number_field :internal_number %>
   </div>
 
   <div class="field">
-    <%= form.label :title, "Naslov" %>
+    <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :author_id, "Avtor" %>
-    <%= form.collection_select :author_id, Author.order(:name), :id, :name, include_blank: true %>
+    <%= form.label :author_name %>
+    <%= form.text_field :author_name, value: @raw_author_name %>
   </div>
 
   <div class="field">
-    <%= form.label :genre_id, "Žanr" %>
+    <%= form.label :genre %>
     <%= form.collection_select :genre_id, Genre.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">
-    <%= form.label :is_borrowed, "Izposojena" %>
+    <%= form.label :is_borrowed %>
     <%= form.check_box :is_borrowed %>
   </div>
 

@@ -11,6 +11,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="header">
+      <div class="header__section">
+        <div class="header__button header__button--main">Knjigored</div>
+      </div>
+
+      <div class="header__section header__section--right">
+        <div class="header__button">Domov</div>
+        <% if session[:current_user] %>
+          <div class="header__button">Odjava</div>
+        <% else %>
+          <div class="header__button">Prijava</div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="main-wrapper">
+      <%= yield %>
+    </div>
   </body>
 </html>

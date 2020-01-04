@@ -15,6 +15,7 @@ sl:
     attributes:
       book:
         author: 'Avtor'
+        author_name: 'Avtor'
         genre: 'Žanr'
         title: 'Naslov'
         is_borrowed: 'Izposojena'

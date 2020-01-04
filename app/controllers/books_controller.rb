@@ -11,7 +11,7 @@ class BooksController < ApplicationController
       REPLACE(REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') LIKE :query OR
       REPLACE(REPLACE(REPLACE(REPLACE(LOWER(genres.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') LIKE :query
     "
-    query_param = @raw_query_param.delete(' ').downcase rescue ''
+    query_param = @raw_query_param.delete(' ').downcase.gsub('č', 'c').gsub('š', 's').gsub('ž', 'z') rescue ''
 
     if is_int? @raw_query_param
       where_query = where_query + "OR books.internal_number = :raw_query"
@@ -46,13 +46,37 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
+    @raw_author_name = params.require(:book)[:author_name]
+    author_name = @raw_author_name.delete(' ').downcase.gsub('č', 'c').gsub('š', 's').gsub('ž', 'z') rescue ''
+    where_query = "REPLACE(REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') = :author_name"
+
+    authors = Author.where(
+      where_query,
+      { author_name: author_name }
+    )
+
+    if authors.size == 0
+      new_author = Author.new(name: @raw_author_name)
+      if new_author.save
+        author_id = new_author.id
+      else
+        author_id = nil
+      end
+    else
+      author_id = authors[0].id
+    end
+
+    @book = Book.new(book_params.merge(:author_id => author_id))
 
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Knjiga uspešno ustvarjena.' }
         format.json { render :show, status: :created, location: @book }
       else
+        if new_author
+          new_author.destroy!
+        end
+
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
@@ -97,6 +121,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:internal_number, :title, :is_borrowed, :genre_id, :author_id)
+      params.require(:book).permit(:internal_number, :title, :is_borrowed, :genre_id)
     end
 end
