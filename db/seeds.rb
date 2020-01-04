@@ -8,6 +8,7 @@
 
 puts 'Inserting genres'
 
+Genre.new(name: 'avtobiografija').save!
 Genre.new(name: 'biografija').save!
 Genre.new(name: 'drama').save!
 Genre.new(name: 'fantazija').save!
@@ -18,7 +19,11 @@ Genre.new(name: 'mladinski roman').save!
 Genre.new(name: 'modernistični roman').save!
 Genre.new(name: 'pesmi').save!
 Genre.new(name: 'potopis').save!
+Genre.new(name: 'povest').save!
 Genre.new(name: 'pravljica').save!
+Genre.new(name: 'priročnik').save!
 Genre.new(name: 'psihološki roman').save!
+Genre.new(name: 'roman').save!
+Genre.new(name: 'slikanica').save!
 Genre.new(name: 'vojni roman').save!
 Genre.new(name: 'zgodovinski roman').save!
