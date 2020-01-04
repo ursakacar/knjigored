@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 
     if @librarian.login_valid?
       session[:current_user] = true
+      flash[:notice] = nil
       redirect_to '/'
     else
       @librarian.password = nil

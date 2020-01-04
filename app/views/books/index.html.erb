@@ -5,13 +5,9 @@
 <h1>Knjige</h1>
 
 <div class="books__search">
-  <input id="books-search-input" placeholder="Išči knjige" value="<%= @raw_query_param %>"/>
+  <input id="books-search-input" class="books__search-input" placeholder="Išči knjige" value="<%= @raw_query_param %>"/>
   <div id="books-search-button" class="books__search-button">Išči</div>
 </div>
-
-<% if session[:current_user] %>
-  <%= link_to 'Dodaj knjigo', new_book_path %>
-<% end %>
 
 <table>
   <thead>

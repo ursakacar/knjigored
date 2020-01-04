@@ -1,6 +1,10 @@
 @import './variables.scss';
 
 body {
+  margin: 0 !important ;
+}
+
+.main-wrapper {
   padding: 20px;
 }
 
@@ -33,9 +37,13 @@ a {
   border: 1px solid black;
   border-radius: 6px;
   text-decoration: none;
-  color: blue !important;
+  color: blue;
   padding: 2px 6px;
   box-sizing: border-box;
+
+  &:visited {
+    color: blue;
+  }
 
   &:hover {
     text-decoration: none !important;

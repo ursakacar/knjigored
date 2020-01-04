@@ -13,15 +13,18 @@
   <body>
     <div class="header">
       <div class="header__section">
-        <div class="header__button header__button--main">Knjigored</div>
+        <%= link_to 'Knjigored', books_path, class: 'header__button header__button--main' %>
       </div>
 
       <div class="header__section header__section--right">
-        <div class="header__button">Domov</div>
         <% if session[:current_user] %>
-          <div class="header__button">Odjava</div>
+          <%= link_to 'Dodaj knjigo', new_book_path, class: 'header__button' %>
+        <% end %>
+        <%= link_to 'Domov', books_path, class: 'header__button' %>
+        <% if session[:current_user] %>
+          <%= link_to 'Odjava', logout_sessions_path, class: 'header__button' %>
         <% else %>
-          <div class="header__button">Prijava</div>
+          <%= link_to 'Prijava', '/sessions/new', class: 'header__button' %>
         <% end %>
       </div>
     </div>
@@ -31,3 +34,4 @@
     </div>
   </body>
 </html>
+
