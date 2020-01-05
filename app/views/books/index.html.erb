@@ -9,7 +9,7 @@
   <div id="books-search-button" class="books__search-button">Išči</div>
 </div>
 
-<table>
+<table class="books__table">
   <thead>
     <tr>
       <th>Interna številka</th>
@@ -17,7 +17,9 @@
       <th>Avtor</th>
       <th>Žanr</th>
       <th>Izposojena</th>
-      <th colspan="3"></th>
+      <% if session[:current_user] %>
+        <th colspan="3"></th>
+      <% end %>
     </tr>
   </thead>
 

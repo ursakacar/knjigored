@@ -1,7 +1,13 @@
 @import './variables.scss';
 
 body {
-  margin: 0 !important ;
+  margin: 0;
+  font-family: verdana, arial, helvetica, sans-serif;
+  background-color: $background;
+}
+
+h1 {
+  color: $title_color;
 }
 
 .main-wrapper {
@@ -9,47 +15,52 @@ body {
 }
 
 table {
-  border: 1px solid black;
-  box-sizing: border-box;
+  border-collapse: collapse;
+  border: 2px solid $borders;
+  border-radius: 6px;
+  background-color: $table_body;
+
+  text-align: left;
 }
 
 thead {
-  color: black;
-  font-style: bold;
-  font-size: 18px;
+  background-color: $table_header;
+  border: 2px solid $borders;
 }
 
 th {
-  padding-right: 25px;
-}
-
-tr {
-  border-bottom: 1px solid black;
+  padding: 10px 15px;
+  font-size: 20px;
+  color: $borders;
 }
 
 td {
   font-size: 15px;
   line-height: 28px;
-  padding: 7px;
+  padding: 8px 10px;
 }
 
 a {
-  border: 1px solid black;
+  border: 1px solid $borders;
   border-radius: 6px;
   text-decoration: none;
-  color: blue;
+  background-color: $button_background;
+  color: $borders;
   padding: 2px 6px;
   box-sizing: border-box;
-
-  &:visited {
-    color: blue;
-  }
+  font-weight: 400;
+  font-size: 15px;
 
   &:hover {
-    text-decoration: none !important;
-    background-color: gray !important;
-    color: white !important;
+    text-decoration: none;
+    background-color: $button_hover;
+    color: white;
+    transition: color 250ms ease-out, shadow 300ms ease-out;
+    box-shadow: 0px 8px 10px $button_shadow;
   }
+}
+.add-button {
+  font-size: 25px;
 }
 
 .field {
@@ -62,25 +73,47 @@ a {
 
 .actions {
   margin: 50px 0;
-  margin-bottom: 25px !important;
+  margin-bottom: 25px;
 }
 
 #notice {
-  font-size: 18px;
-  border: 1px solid black;
+  color: $notice_color;
+  font-size: 17px;
+  border: 3px solid notice_border;
   border-radius: 8px;
-  padding: 7 15px;
+  padding: 7px 20px;
   width: fit-content;
-  background-color: $notice_gray_background;
+  background-color: $notice_background;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: $error_background;
+  display: table;
 }
 
 #error_explanation {
-  background-color: $error_red_background;
+  background-color: $error_background;
   width: fit-content;
   padding: 7px 20px;
   border-radius: 8px;
+  width: 450px;
+  border: 3px solid $error_header;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+}
 
-  h2 {
-    font-size: 18px;
-  }
+#error_explanation h2 {
+  text-align: left;
+  font-weight: 700;
+  padding: 5px 5px 5px 15px;
+  font-size: 20px;
+  margin: -7px -7px 0;
+  background-color: $error_header;
+  color: $text;
+}
+
+#error_explanation ul li {
+  font-size: 17px;
+  list-style: square;
 }
