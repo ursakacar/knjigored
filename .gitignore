@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 local_env.yml
+latest.dump*
 
 # Ignore bundler config.
 /.bundle
