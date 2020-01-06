@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
       @librarian.password = nil
-      flash[:notice] = 'Napačno uporabniško ime ali geslo'
+      flash.now[:notice] = 'Napačno uporabniško ime ali geslo'
       render 'new'
     end
   end
