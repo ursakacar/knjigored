@@ -27,5 +27,5 @@
   <%= @book.is_borrowed ? 'Da' : 'Ne' %>
 </p>
 
-<%= link_to 'Uredi', edit_book_path(@book) %> |
-<%= link_to 'Nazaj', books_path %>
+<%= link_to 'Uredi', edit_book_path(@book), class: 'add-button' %>
+<%= link_to 'Nazaj', books_path, class: 'add-button' %>
