@@ -20,6 +20,7 @@
   &:hover {
     text-decoration: underline;
     background: transparent;
+    box-shadow: none;
     color: $header_button_hover;
     transition: color 250ms ease-out, text-decoration 350ms ease-out;
   }

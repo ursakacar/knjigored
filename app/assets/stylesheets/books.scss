@@ -5,7 +5,7 @@
 }
 
 .book--borrowed {
-  background-color: #deaeb1;
+  background-color: $book_borrowed;
 }
 
 .books__search {
@@ -15,6 +15,7 @@
 }
 
 .books__search-button {
+  background-color: $search_button_background; 
   border: 2px solid $borders;
   color: $borders;
   border-radius: 6px;
@@ -28,8 +29,8 @@
   font-weight: 700;
 
   &:hover {
-    background-color: $navy_blue;
-    color: #ffeeC7;
+    background-color: $search_button_background_hover;
+    color: $button_hover_color;
     transition: color 250ms ease-out, background-color 250ms ease-out;
   }
 }
