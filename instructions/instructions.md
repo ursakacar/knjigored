@@ -9,28 +9,30 @@ Trenutno izposojene knjige so v seznamu označene z rdečim ozadjem.
 
 ### Neprijavljeni uporabnik
 
-Neprijavljeni uporabnik v zgornji vrstici vidi napis **Prijava**. Prav tako vidi seznam vse knjig- njihove interne številke, naslove, avtorje, žanre, ter ali je določena knjiga na voljo ali izposojena. 
+Neprijavljeni uporabnik v zgornji vrstici vidi napis **Prijava**. Prav tako vidi seznam vseh knjig- njihove interne številke, naslove, avtorje, žanre, ter ali je določena knjiga na voljo ali izposojena. 
 
 ![Knjigored- neprijavljeni uporabnik](./images/knjigored-first-page.png)
 
 ### Prijavljeni uporabnik
-Prijavljeni uporabnik v zgornji vrstici desno vidi napise **Dodaj knjigo**, **Domov** in **Odjava**. Poleg seznama knjig vidi poleg vsake knjige še dodatne tri gumbe: **Prikaži**, **Uredi**, **Izbriši**.
+Prijavljeni uporabnik v zgornji vrstici desno vidi napise **Dodaj knjigo**, **Domov** in **Odjava**. Poleg seznama knjig vidi zraven vsake knjige še dodatne tri gumbe: **Prikaži**, **Uredi**, **Izbriši**.
 
 ![Knjigored- prijavljeni uporabnik](./images/knjigored-loggedin.png)
 
 ## Prijava
-Za dodajanje ali urejanje knjig je obvezna predhodna prijava v Knjigored. 
+Za dodajanje, urejanje in izbris knjig je obvezna predhodna prijava v Knjigored. 
 
 Če so v zgodnji vrstici desno napisi **Dodaj knjigo**, **Domov** in **Odjava**, pomeni, da si že prijavljena, in lahko začneš z dodajanjem in urejanjem knjig.
 
 Če je v zgornjo vrstici desno napis **Prijava**, pomeni da trenutno nisi prijavljena. 
+
+Takole se prijaviš:
 * Klikni na **Prijava** desno zgoraj
 * Vnesi uporabniško ime in geslo, ki sem ti jih poslala na email
 * Klikni na siv gumb **Prijava**, ki se nahaja spodaj levo, pod poljem za geslo
 
-![Prijava v Knjigored](./images/knjigored-login.gif)
-
 Če se boš zmotila pri uporabniškem imenu ali geslu, ti bo javilo napako. Sicer boš uspešno prijavljena v Knjigored. 
+
+![Prijava v Knjigored](./images/knjigored-login.gif)
 
 ## Iskanje
 
@@ -38,24 +40,24 @@ Iščeš lahko po interni številki, naslovu, avtorju ali žanru.
 
 * Klikni v iskalno polje, v katerem piše **Išči knjige**
 * Vpiši iskalni niz
-* Klikni na gumb **Išči**, ki se nahaja desno od iskalnega polje
-
-![Iskanje knjig](./images/knjigored-search.gif)
+* Klikni na gumb **Išči**, ki se nahaja desno od iskalnega polja
 
 Za ponovni prikaz vseh knjig, klikni na **Domov** v zgornji vrstici desno.
 
+![Iskanje knjig](./images/knjigored-search.gif)
+
 ## Dodajanje knjige
 
-Novo knjigo dodaš s klikom na **Dodaj knjigo** 
-Interna stevilka, naslov in avtor so obvezni. Zanra ti ni treba vnesti. Ce
+Novo knjigo dodaš s klikom na **Dodaj knjigo**. 
+Interna številka, naslov in avtor so obvezni. To pomeni, da knjige ne boš mogla shraniti, če ne boš vnesla vseh teh treh podatkov. Žanr je neobvezen, izbereš ga iz seznama. Če iskanega žanra ni na seznamu, me sporoči, da ga dodam.
 
 * Prepričaj se, da si prijavljena v Knjigored
 * Klikni na **Dodaj knjigo** v zgornji vrstici desno
 * Vnesi podatke o knjigi:
-  * Interno številko (obvezno) 
+  * Interna številka (obvezno) 
   * Naslov (obvezno) 
-  * Avtorja (obvezno)
-  * Žanr (neobvezno): klikni na polje in izberi ustrezni žanr iz seznama. Če iskanega žanra ni na seznamu, ponovno klikni na polje, da ga zapreš, ter me pokliči, da dodam manjkajoči žanr.
+  * Avtor (obvezno)
+  * Žanr (neobvezno): klikni na polje in izberi ustrezni žanr iz seznama. Če noben žanr ne ustreza, ponovno klikni na polje, da ga zapreš, ter me pokliči
 * Klikni na siv gumb **Dodaj knjigo**, ki se nahaja spodaj levo
 
 ![Dodajanje knjige](./images/knjigored-adding-book.gif)
@@ -98,7 +100,6 @@ Je nekdo ravno vrnil izposojeno knjigo, in želiš v Knjigoredu zabeležiti, da 
 
 * Prepričaj se, da si prijavljena v Knjigored
 * Klikni na gumb **Uredi** poleg knjige, ki jo želiš označiti kot vrnjeno
-* Vnesi željene spremembe
 * Pod žanrom se nahaja napis **Izposojena**, pod njim pa majhen siv 'kvadratek' s kljukico
 * Klikni na kvadratek - kljukica mora izginiti
 * Klikni na gumb **Popravi knjigo**
