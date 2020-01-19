@@ -19,9 +19,7 @@
       <div class="header__section header__section--right">
         <% if session[:current_user] %>
           <%= link_to 'Dodaj knjigo', new_book_path, class: 'header__button' %>
-        <% end %>
-        <%= link_to 'Domov', books_path, class: 'header__button' %>
-        <% if session[:current_user] %>
+          <%= link_to 'Domov', books_path, class: 'header__button' %>
           <%= link_to 'Odjava', logout_sessions_path, class: 'header__button' %>
         <% else %>
           <%= link_to 'Prijava', '/sessions/new', class: 'header__button' %>
