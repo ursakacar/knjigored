@@ -15,7 +15,7 @@ class BooksController < ApplicationController
 
     if is_int? @raw_query_param
       where_query = where_query + "OR books.internal_number = :raw_query"
-    end 
+    end
 
     @books = Book.all
       .left_joins(:author, :genre)
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
           raw_query: @raw_query_param,
         }
       )
-      .order(:title)
+      .order(is_borrowed: :desc, :title)
   end
 
   # GET /books/1
