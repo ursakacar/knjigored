@@ -14,14 +14,14 @@ Neprijavljeni uporabnik v zgornji vrstici vidi napis **Prijava**. Prav tako vidi
 ![Knjigored- neprijavljeni uporabnik](./images/knjigored-first-page.png)
 
 ### Prijavljeni uporabnik
-Prijavljeni uporabnik v zgornji vrstici desno vidi napise **Dodaj knjigo**, **Domov** in **Odjava**. Poleg seznama knjig vidi zraven vsake knjige še dodatne tri gumbe: **Prikaži**, **Uredi**, **Izbriši**.
+Prijavljeni uporabnik v zgornji vrstici desno vidi napise **Nova knjiga**, **Domov** in **Odjava**. Poleg seznama knjig vidi zraven vsake knjige še dodatne tri gumbe: **Prikaži**, **Uredi**, **Izbriši**.
 
 ![Knjigored- prijavljeni uporabnik](./images/knjigored-loggedin.png)
 
 ## Prijava
 Za dodajanje, urejanje in izbris knjig je obvezna predhodna prijava v Knjigored. 
 
-Če so v zgodnji vrstici desno napisi **Dodaj knjigo**, **Domov** in **Odjava**, pomeni, da si že prijavljena, in lahko začneš z dodajanjem in urejanjem knjig.
+Če so v zgodnji vrstici desno napisi **Nova knjiga**, **Domov** in **Odjava**, pomeni, da si že prijavljena, in lahko začneš z dodajanjem in urejanjem knjig.
 
 Če je v zgornjo vrstici desno napis **Prijava**, pomeni da trenutno nisi prijavljena. 
 
@@ -48,11 +48,11 @@ Za ponovni prikaz vseh knjig, klikni na **Domov** v zgornji vrstici desno.
 
 ## Dodajanje knjige
 
-Novo knjigo dodaš s klikom na **Dodaj knjigo**. 
+Novo knjigo dodaš s klikom na **Nova knjiga**. 
 Interna številka, naslov in avtor so obvezni. To pomeni, da knjige ne boš mogla shraniti, če ne boš vnesla vseh teh treh podatkov. Žanr je neobvezen, izbereš ga iz seznama. Če iskanega žanra ni na seznamu, me sporoči, da ga dodam.
 
 * Prepričaj se, da si prijavljena v Knjigored
-* Klikni na **Dodaj knjigo** v zgornji vrstici desno
+* Klikni na **Nova knjiga** v zgornji vrstici desno
 * Vnesi podatke o knjigi:
   * Interna številka (obvezno) 
   * Naslov (obvezno) 
