@@ -26,7 +26,7 @@ class BooksController < ApplicationController
           raw_query: @raw_query_param,
         }
       )
-      .order(is_borrowed: :desc, :title)
+      .order(is_borrowed: :desc, title: :asc)
   end
 
   # GET /books/1
