@@ -2,7 +2,21 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Knjige</h1>
+<div class="books__title-wrapper">
+  <h1>Knjige</h1>
+
+  <div class="books__count">
+    <div class="books__count-stat">
+      <div class="books__count-stats-text">Število vseh knjig: </div>
+      <div class="books__count-stats-number"><%= @total_books_count %></div>
+    </div>
+
+    <div class="books__count-stat">
+      <div class="books__count-stats-text">Število izposojenih knjig: </div>
+      <div class="books__count-stats-number"><%= @borrowed_books_count %></div>
+    </div>
+  </div>
+</div>
 
 <div class="books__search">
   <input id="books-search-input" class="books__search-input" placeholder="Išči knjige" value="<%= @raw_query_param %>"/>
