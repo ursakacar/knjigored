@@ -1,5 +1,32 @@
 @import './variables.scss';
 
+.books__title-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.books__count {
+  font-weight: 700;
+  color: $title_color;
+  text-align:right;
+}
+
+.books__count-stat {
+  display: flex;
+}
+
+.books__count-stats-text {
+  font-size: 17px;
+  line-height: 22px;
+  margin-right: 5px;
+}
+
+.books__count-stats-number {
+  font-size: 22px;
+  line-height: 22px;
+  margin-left: auto;
+}
+
 .books__table {
   width: 100%;
 }
@@ -15,7 +42,7 @@
 }
 
 .books__search-button {
-  background-color: $search_button_background; 
+  background-color: $search_button_background;
   border: 2px solid $borders;
   color: $borders;
   border-radius: 6px;

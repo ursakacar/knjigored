@@ -27,6 +27,12 @@ class BooksController < ApplicationController
         }
       )
       .order(is_borrowed: :desc, title: :asc)
+
+    @total_books_count = Book.all.count
+    @borrowed_books_count = Book.all
+      .where(is_borrowed: true)
+      .count
+
   end
 
   # GET /books/1
