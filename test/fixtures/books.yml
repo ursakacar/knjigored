@@ -2,14 +2,28 @@
 
 one:
   internal_number: 1
-  title: MyString
+  title: Title-1
   is_borrowed: false
   genre: one
   author: one
 
 two:
-  internal_number: 1
-  title: MyString
+  internal_number: 2
+  title: Title-2
   is_borrowed: false
   genre: two
   author: two
+
+two:
+  internal_number: 3
+  title: Title-3
+  is_borrowed: true
+  genre: three
+  author: three
+
+four:
+  internal_number: 4
+  title: Title-4
+  is_borrowed: true
+  genre: one
+  author: one
