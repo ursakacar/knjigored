@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class AuthorTest < ActiveSupport::TestCase
 
@@ -11,23 +11,23 @@ class AuthorTest < ActiveSupport::TestCase
 
   test "should not save author with duplicate name" do
     author = Author.new(
-      name: "Nov Avtor",
+      name: "New Author",
     )
     author_duplicated = Author.new(
-      name: "Nov Avtor",
+      name: "New Author",
     )
     assert author.save
     assert_not author_duplicated.save
-    assert "Nov Avtor", author.name
+    assert "New Author", author.name
     assert_equal "Ime že obstaja", author_duplicated.errors.full_messages.first
   end
 
   test "should save author with name" do
     author = Author.new(
-      name: "Nov Avtor",
+      name: "New Author",
     )
     assert author.save
-    assert "Nov Avtor", author.name
+    assert "New Author", author.name
   end
 
 end
