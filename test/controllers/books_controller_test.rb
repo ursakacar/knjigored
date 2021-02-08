@@ -98,10 +98,44 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_session_path
   end
 
-  # test "should update book" do
-  #   patch book_url(@book), params: { book: { author_id: @book.author_id, genre_id: @book.genre_id, internal_number: @book.internal_number, is_borrowed: @book.is_borrowed, title: @book.title } }
-  #   assert_redirected_to book_url(@book)
-  # end
+  test "should update book if logged in" do
+    login
+    patch book_url(@book), params: { book: { author_name: authors(:two).name, genre_id: genres(:two).id, internal_number: 5, is_borrowed: true, title: @book2.title } }
+    assert_redirected_to book_url(@book)
+
+    updated_book = Book.find(@book.id)
+    assert_equal updated_book.author_id, authors(:two).id
+    assert_equal updated_book.genre_id,  genres(:two).id
+    assert_equal updated_book.internal_number, 5
+    assert_equal updated_book.is_borrowed, true
+    assert_equal updated_book.title,  @book2.title
+  end
+
+  test "should not update book with existing internal number" do
+    login
+    patch book_url(@book), params: { book: { internal_number: 2 } }
+
+    updated_book = Book.find(@book.id)
+    assert_equal updated_book.author_id, @book.author_id
+    assert_equal updated_book.genre_id, @book.genre_id
+    assert_equal updated_book.internal_number, @book.internal_number
+    assert_equal updated_book.title, @book.title
+    assert_equal updated_book.is_borrowed, @book.is_borrowed
+  end
+
+  test "should not update book if not logged in" do
+    patch book_url(@book), params: { book: { author_id: "New Author", genre_id: "genre", internal_number: 11, is_borrowed: true, title: "New Title" } }
+
+    assert_response :redirect
+    assert_redirected_to new_session_path
+
+    updated_book = Book.find(@book.id)
+    assert_equal updated_book.author_id, @book.author_id
+    assert_equal updated_book.genre_id, @book.genre_id
+    assert_equal updated_book.internal_number, @book.internal_number
+    assert_equal updated_book.title, @book.title
+    assert_equal updated_book.is_borrowed, @book.is_borrowed
+  end
 
   test "should destroy book if logged in" do
     login
@@ -121,3 +155,20 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_session_path
   end
 end
+
+
+# test "should update author if logged in" do
+#   login
+#   patch author_url(@author), params: { author: { name: "New Author" } }
+#   assert_redirected_to author_url(@author)
+
+#   updated_author = Author.find(@author.id)
+#   assert_equal updated_author.name, "New Author"
+# end
+
+# test "should not update author with duplicate name if logged in" do
+#   login
+#   patch author_url(@author), params: { author: { name: @author2.name } }
+#   updated_author = Author.find(@author.id)
+#   assert_equal updated_author.name, @author.name
+# end

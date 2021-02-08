@@ -53,7 +53,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    author_id = get_author_id
+    author_id, is_new_author = get_author_id
 
     @book = Book.new(book_params.merge(:author_id => author_id))
     respond_to do |format|
@@ -61,9 +61,10 @@ class BooksController < ApplicationController
         format.html { redirect_to @book, notice: 'Knjiga uspešno ustvarjena.' }
         format.json { render :show, status: :created, location: @book }
       else
-        if new_author
-          new_author.destroy!
-        end
+        # if is_new_author
+        #   new_author = Author.find(author_id)
+        #   new_author.destroy!
+        # end
 
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }
@@ -74,7 +75,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    author_id = get_author_id
+    author_id, is_new_author = get_author_id
     @book.update(book_params.merge(:author_id => author_id))
 
     respond_to do |format|
@@ -82,6 +83,11 @@ class BooksController < ApplicationController
         format.html { redirect_to @book, notice: 'Knjiga uspešno posodobljena.' }
         format.json { render :show, status: :ok, location: @book }
       else
+        # if is_new_author
+        #   new_author = Author.find(author_id)
+        #   new_author.destroy!
+        # end
+
         format.html { render :edit }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
@@ -116,6 +122,7 @@ class BooksController < ApplicationController
     end
 
     def get_author_id
+      is_new_author = false
       @raw_author_name = params.require(:book)[:author_name]
       author_name = @raw_author_name.delete(' ').downcase.gsub('č', 'c').gsub('š', 's').gsub('ž', 'z') rescue ''
       where_query = "REPLACE(REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') = :author_name"
@@ -126,6 +133,7 @@ class BooksController < ApplicationController
       )
 
       if authors.size == 0
+        is_new_author = true
         new_author = Author.new(name: @raw_author_name)
         if new_author.save
           author_id = new_author.id
@@ -136,6 +144,6 @@ class BooksController < ApplicationController
         author_id = authors[0].id
       end
 
-      return author_id
+      return author_id, is_new_author
     end
 end
