@@ -98,7 +98,6 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_session_path
   end
 
-  # TODO
   # test "should update book" do
   #   patch book_url(@book), params: { book: { author_id: @book.author_id, genre_id: @book.genre_id, internal_number: @book.internal_number, is_borrowed: @book.is_borrowed, title: @book.title } }
   #   assert_redirected_to book_url(@book)
