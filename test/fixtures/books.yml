@@ -14,7 +14,7 @@ two:
   genre: two
   author: two
 
-two:
+three:
   internal_number: 3
   title: Title-3
   is_borrowed: true
