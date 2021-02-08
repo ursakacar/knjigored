@@ -22,6 +22,14 @@ class AuthorTest < ActiveSupport::TestCase
     assert_equal "Ime že obstaja", author_duplicated.errors.full_messages.first
   end
 
+  test "should strip leading and trailing whitespace on save" do
+    author = Author.new(
+      name: " New Author ",
+    )
+    assert author.save
+    assert "New Author", author.name
+  end
+
   test "should save author with name" do
     author = Author.new(
       name: "New Author",
