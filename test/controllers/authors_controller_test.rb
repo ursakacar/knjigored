@@ -92,9 +92,12 @@ class AuthorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update author if not logged in" do
-    patch author_url(@author), params: { author: { name: @author.name } }
+    patch author_url(@author), params: { author: { name: 'New Author' } }
     assert_response :redirect
     assert_redirected_to new_session_path
+
+    updated_author = Author.find(@author.id)
+    assert_equal updated_author.name, @author.name
   end
 
   test "should destroy author if logged in" do
