@@ -55,6 +55,14 @@ class GenresController < ApplicationController
   # DELETE /genres/1
   # DELETE /genres/1.json
   def destroy
+    if @genre.books.size > 0
+      respond_to do |format|
+        format.html { redirect_to genres_url, error: 'Žanr ne more biti izbrisan.' }
+        format.json { render json: { message: 'Žanr ne more biti izbrisan'}, status: :bad_request }
+      end
+      return
+    end
+
     @genre.destroy
     respond_to do |format|
       format.html { redirect_to genres_url, notice: 'Žanr uspešno izbrisan.' }

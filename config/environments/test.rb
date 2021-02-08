@@ -45,4 +45,8 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+
+  # Default test login credentials
+  ENV['USERNAME'] = 'test'
+  ENV['PASSWORD'] = 'test1234'
 end
