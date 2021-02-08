@@ -53,25 +53,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @raw_author_name = params.require(:book)[:author_name]
-    author_name = @raw_author_name.delete(' ').downcase.gsub('č', 'c').gsub('š', 's').gsub('ž', 'z') rescue ''
-    where_query = "REPLACE(REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') = :author_name"
-
-    authors = Author.where(
-      where_query,
-      { author_name: author_name }
-    )
-
-    if authors.size == 0
-      new_author = Author.new(name: @raw_author_name)
-      if new_author.save
-        author_id = new_author.id
-      else
-        author_id = nil
-      end
-    else
-      author_id = authors[0].id
-    end
+    author_id = get_author_id
 
     @book = Book.new(book_params.merge(:author_id => author_id))
     respond_to do |format|
@@ -92,26 +74,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    @raw_author_name = params.require(:book)[:author_name]
-    author_name = @raw_author_name.delete(' ').downcase.gsub('č', 'c').gsub('š', 's').gsub('ž', 'z') rescue ''
-    where_query = "REPLACE(REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') = :author_name"
-
-    authors = Author.where(
-      where_query,
-      { author_name: author_name }
-    )
-
-    if authors.size == 0
-      new_author = Author.new(name: @raw_author_name)
-      if new_author.save
-        author_id = new_author.id
-      else
-        author_id = nil
-      end
-    else
-      author_id = authors[0].id
-    end
-
+    author_id = get_author_id
     @book.update(book_params.merge(:author_id => author_id))
 
     respond_to do |format|
@@ -150,5 +113,29 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:internal_number, :title, :is_borrowed, :genre_id)
+    end
+
+    def get_author_id
+      @raw_author_name = params.require(:book)[:author_name]
+      author_name = @raw_author_name.delete(' ').downcase.gsub('č', 'c').gsub('š', 's').gsub('ž', 'z') rescue ''
+      where_query = "REPLACE(REPLACE(REPLACE(REPLACE(LOWER(authors.name), 'č', 'c'), 'š', 's'), 'ž', 'z'), ' ', '') = :author_name"
+
+      authors = Author.where(
+        where_query,
+        { author_name: author_name }
+      )
+
+      if authors.size == 0
+        new_author = Author.new(name: @raw_author_name)
+        if new_author.save
+          author_id = new_author.id
+        else
+          author_id = nil
+        end
+      else
+        author_id = authors[0].id
+      end
+
+      return author_id
     end
 end
