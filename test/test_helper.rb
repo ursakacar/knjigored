@@ -9,5 +9,8 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def login
+    post "/sessions", params: { librarian: { username: ENV['USERNAME'], password: ENV['PASSWORD'] } }
+  end
+
 end

@@ -55,6 +55,14 @@ class AuthorsController < ApplicationController
   # DELETE /authors/1
   # DELETE /authors/1.json
   def destroy
+    if @author.books.size > 0
+      respond_to do |format|
+        format.html { redirect_to authors_url, error: 'Avtor ne more biti izbrisan.' }
+        format.json { render json: { message: 'Avtor ne more biti izbrisan'}, status: :bad_request }
+      end
+      return
+    end
+
     @author.destroy
     respond_to do |format|
       format.html { redirect_to authors_url, notice: 'Avtor uspešno izbrisan.' }
