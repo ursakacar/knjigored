@@ -74,7 +74,7 @@ class BooksController < ApplicationController
     end
 
     @book = Book.new(book_params.merge(:author_id => author_id))
-
+    # binding.pry
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Knjiga uspešno ustvarjena.' }
