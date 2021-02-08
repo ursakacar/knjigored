@@ -3,6 +3,7 @@ require 'test_helper'
 class AuthorsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @author = authors(:one)
+    @author2 = authors(:two)
   end
 
   test "should get index if logged in" do
@@ -76,13 +77,18 @@ class AuthorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update author if logged in" do
     login
-    patch author_url(@author), params: { author: { name: @author.name } }
+    patch author_url(@author), params: { author: { name: "New Author" } }
     assert_redirected_to author_url(@author)
 
+    updated_author = Author.find(@author.id)
+    assert_equal updated_author.name, "New Author"
+  end
 
-    post authors_url, params: { author: { name: 'New Author' } }
-    created_author = Author.all.order(created_at: :desc).first
-    assert_equal created_author.name, "New Author"
+  test "should not update author with duplicate name if logged in" do
+    login
+    patch author_url(@author), params: { author: { name: @author2.name } }
+    updated_author = Author.find(@author.id)
+    assert_equal updated_author.name, @author.name
   end
 
   test "should not update author if not logged in" do
