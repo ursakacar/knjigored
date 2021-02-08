@@ -11,22 +11,22 @@ class GenreTest < ActiveSupport::TestCase
 
   test "should not save genre with duplicate name" do
     genre = Genre.new(
-      name: "fantasy",
+      name: "crime",
     )
-    genre_duplicated = genre.new(
-      name: "fantasy",
+    genre_duplicated = Genre.new(
+      name: "crime",
     )
     assert genre.save
     assert_not genre_duplicated.save
-    assert "fantasy", genre.name
-    assert_equal "Zvrst že obstaja", genre_duplicated.errors.full_messages.first
+    assert "crime", genre.name
+    assert_equal "Ime že obstaja", genre_duplicated.errors.full_messages.first
   end
 
   test "should save genre with name" do
     genre = Genre.new(
-      name: "fantasy",
+      name: "crime",
     )
     assert genre.save
-    assert "fantasy", genre.name
+    assert "crime", genre.name
   end
 end
