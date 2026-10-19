@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Knjigored
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.0
 
     # The only language we have is Slovene
     config.i18n.default_locale = :sl

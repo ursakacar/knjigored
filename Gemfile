@@ -4,8 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '~> 3.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.2.2'
-# json 3 dropped the quirks_mode option ActiveSupport still passes
+gem 'rails', '~> 8.0.3'
+# json 3 dropped the quirks_mode option that ActiveSupport 8.0 still passes
 gem 'json', '< 3'
 # Use postgres as the database for Active Record
 gem 'pg', '~> 1.5'
@@ -47,7 +47,6 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', '~> 5.0'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
