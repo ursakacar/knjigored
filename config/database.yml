@@ -25,6 +25,8 @@ test:
   database: test_knjigored
   username: knjigored
   password: knjigored1
+  # libpq's GSSAPI probe crashes forked parallel test workers on macOS
+  gssencmode: disable
 
 production:
   <<: *default
