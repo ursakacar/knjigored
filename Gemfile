@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '~> 3.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.1.5'
+gem 'rails', '~> 7.2.2'
 # json 3 dropped the quirks_mode option ActiveSupport still passes
 gem 'json', '< 3'
 # Use postgres as the database for Active Record
